@@ -110,15 +110,10 @@ For permanent Cloudflare hosting, see [Cloudflare deployment](docs/CLOUDFLARE.md
 The account connection and deployment secrets are still required. Source upload
 verification and deployment checks are recorded in `docs/VERIFICATION.md`.
 
-With an account authorized to create a **new** `fireflow-lab` repository:
-
-If working from the source ZIP (without Git history), first initialize and commit
-the extracted directory with `git init -b main`, `git add .`, and
-`git commit -m "Implement FireFlow Lab"` before running the command below.
-
-```sh
-gh repo create fireflow-lab --public --source=. --remote=origin --push
-```
+The source is uploaded to the repository above. A normal clone already has its
+remote configured; use `git push origin main` for subsequent changes. To publish a
+separate copy from the ZIP, initialize Git and choose a new repository in your own
+account rather than recreating this existing one.
 
 Select **Settings → Pages → Source: GitHub Actions** in that new repository.
 The optional manual `Deploy GitHub Pages` workflow builds with `/<repository-name>/` as Vite's base path and uploads `dist/`.
@@ -141,4 +136,4 @@ inputs and applicable standards with a qualified engineer.**
 
 For the current Cloudflare target, see [Cloudflare deployment](docs/CLOUDFLARE.md).
 The verified temporary preview is https://fireflow-lab.frosted-editor.workers.dev/.
-Permanent hosting and GitHub upload require the account connections described there.
+GitHub source upload is complete; permanent Cloudflare hosting still requires the account secrets described there.

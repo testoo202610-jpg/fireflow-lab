@@ -97,3 +97,22 @@ software behavior on the supplied models, not approval for real fire systems.
   are not retained in project source or published documentation.
 
 See [Cloudflare deployment](CLOUDFLARE.md) for permanent setup and precise limits.
+
+### Verified GitHub upload and hosted checks
+
+- The new empty repository became available externally and all source files were
+  pushed successfully to https://github.com/testoo202610-jpg/fireflow-lab. Remote
+  `main` SHA was verified as `4af88f5d4a4e60d0fd802a5900c761d16c407f43`.
+- GitHub Actions **Check and build** passed installation, TypeScript, lint, all
+  numerical tests, production build, browser installation and E2E:
+  https://github.com/testoo202610-jpg/fireflow-lab/actions/runs/38631840332
+- Cloudflare automatic deployment was skipped because automatic publication was
+  not enabled. A manual deployment was actually attempted and failed at the
+  connection check: both Cloudflare Actions secrets were empty. No permanent
+  Pages URL is claimed:
+  https://github.com/testoo202610-jpg/fireflow-lab/actions/runs/38632447888
+- Account-secret and variable listing through the GitHub integration was rejected
+  with HTTP 403; the manual workflow log is the direct evidence for missing values.
+- An idempotent project bootstrap was added for the next authorized Pages deploy.
+  Its syntax and lint can be checked locally; the actual Cloudflare project API
+  operation remains unverified until credentials are configured.

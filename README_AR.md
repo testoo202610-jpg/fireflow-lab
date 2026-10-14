@@ -84,12 +84,9 @@ https://github.com/testoo202610-jpg/fireflow-lab
 المعاينة المؤقتة على Cloudflare تعمل على الرابط المذكور أدناه. النشر الدائم
 في حساب المستخدم ما زال يحتاج اتصال Cloudflare. راجع سجل التحقق لحالة رفع المصدر.
 
-إذا استخدمت حزمة المصدر ZIP دون تاريخ Git، هيئ المجلد المستخرج أولًا بالأوامر
-`git init -b main` ثم `git add .` و`git commit -m "Implement FireFlow Lab"`.
-
-```sh
-gh repo create fireflow-lab --public --source=. --remote=origin --push
-```
+رُفع المصدر إلى المستودع أعلاه، ونجح فحص GitHub Actions. بعد استنساخه يُستخدم
+`git push origin main` للتحديثات. إذا نشرت نسخة مستقلة من ZIP فأنشئ مستودعًا
+آخر في حسابك؛ لا تُعد إنشاء المستودع الحالي.
 
 اختر **Settings → Pages → Source: GitHub Actions**. نشر GitHub Pages اختياري ويُشغّل يدويًا. النشر الآلي الحالي مخصص لـCloudflare
 بعد توفير الأسرار وتفعيل متغير النشر. يجب التحقق من رابط Pages وتشغيل
@@ -111,4 +108,4 @@ gh repo create fireflow-lab --public --source=. --remote=origin --push
 للنشر الحالي على Cloudflare راجع [دليل النشر](docs/CLOUDFLARE.md).
 المعاينة المؤقتة التي نُشرت وتحقق تشغيل المحرك عليها:
 https://fireflow-lab.frosted-editor.workers.dev/
-النشر الدائم ورفع المصدر إلى GitHub ما زالا يحتاجان اتصال الحسابين.
+رفع المصدر إلى GitHub اكتمل؛ النشر الدائم يحتاج إضافة أسرار اتصال Cloudflare إلى المستودع.

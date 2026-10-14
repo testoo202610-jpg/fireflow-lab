@@ -17,7 +17,7 @@
     "build:cloudflare": "node scripts/build-cloudflare.mjs",
     "cloudflare:whoami": "wrangler whoami",
     "cloudflare:create": "wrangler pages project create fireflow-lab --production-branch=main",
-    "deploy:cloudflare": "npm run build:cloudflare && wrangler pages deploy dist --project-name=fireflow-lab --branch=main"
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler pages deploy dist --branch=main"
   },
   "dependencies": {
     "@xyflow/react": "12.12.0",

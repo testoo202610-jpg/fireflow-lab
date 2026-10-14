@@ -16,7 +16,8 @@ browser per origin; export JSON before moving to a different permanent domain.
 The authenticated GitHub integration still rejected `POST /user/repos` with
 HTTP 403, `Resource not accessible by integration`, on 2026-10-14. The integration did not create a repository. A new empty repository subsequently
 became available at https://github.com/testoo202610-jpg/fireflow-lab. The source
-upload result is recorded in `VERIFICATION.md`.
+upload succeeded and was verified against the remote main commit; see
+`VERIFICATION.md`.
 
 The repository was verified as empty and writable before upload. GitHub creation
 permissions remain unavailable through the integration, but existing-repository
@@ -62,7 +63,8 @@ In the new repository's **Settings → Secrets and variables → Actions**, conf
 
 `.github/workflows/cloudflare.yml` publishes the exact successful CI commit. A
 manual workflow dispatch is also available. It rebuilds with the Cloudflare base,
-checks TypeScript, lint and the numerical tests, and uploads `dist` using the
+checks TypeScript, lint and the numerical tests, creates the Pages project if it
+does not exist (or checks its production branch), and uploads `dist` using the
 pinned local Wrangler executable. Missing credentials cause a clear failure.
 
 GitHub Pages remains an optional **manual** workflow; automatic publication is
@@ -75,3 +77,21 @@ Before considering permanent publication complete, check the returned URL,
 `/epanet-2.2.wasm` (HTTP 200), and a real simulation in the browser. The temporary
 Workers preview was checked for HTTP 200 on both assets, a Calculated simulation,
 and no browser page errors. Permanent Pages publication has not occurred yet.
+
+## Current required connection step
+
+Source upload is complete. GitHub CI passed on commit
+`4af88f5d4a4e60d0fd802a5900c761d16c407f43`:
+https://github.com/testoo202610-jpg/fireflow-lab/actions/runs/38631840332
+
+A real manual permanent-deployment attempt failed at the credentials check because
+both required Actions secrets were empty:
+https://github.com/testoo202610-jpg/fireflow-lab/actions/runs/38632447888
+
+Add the two secrets privately at:
+https://github.com/testoo202610-jpg/fireflow-lab/settings/secrets/actions
+Create a scoped Pages Edit API token in your Cloudflare account at:
+https://dash.cloudflare.com/profile/api-tokens
+Then run **Deploy Cloudflare Pages** from the repository's Actions tab. The workflow
+can create the project automatically. The remote project bootstrap cannot be
+verified before the account credentials are supplied.
