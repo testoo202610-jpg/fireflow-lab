@@ -1,10 +1,6 @@
 name: Deploy GitHub Pages
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: [Check and build]
-    types: [completed]
-    branches: [main]
 permissions:
   contents: read
   pages: write
@@ -14,12 +10,11 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 24

@@ -71,3 +71,29 @@ is claimed. Vite emitted its standard >500 kB chunk warning (main ~577 kB raw,
 ~181 kB gzip; toolkit Worker ~770 kB raw); dashboard/report/comparison are lazy
 loaded. The build succeeded and actual browser runs passed. These checks establish
 software behavior on the supplied models, not approval for real fire systems.
+
+## Cloudflare follow-up — 2026-10-14
+
+- GitHub repository creation was retried using the authorized REST API and again
+  rejected with HTTP 403. A new empty repository subsequently became available at
+  https://github.com/testoo202610-jpg/fireflow-lab (created 20:19:06 UTC). Source
+  upload status will be recorded below after remote verification.
+- Wrangler 4.151.0 reported no authenticated Cloudflare user account. The provider's
+  temporary-account deployment feature was then used to publish static assets to
+  **https://fireflow-lab.frosted-editor.workers.dev/**.
+- The actual URL and `/epanet-2.2.wasm` both returned HTTP 200. A real browser run
+  calculated the educational network with no page errors.
+- **All 8 Playwright cases passed against the deployed Cloudflare URL** (desktop
+  and mobile Chromium), 25.6 seconds. This includes changes to PRV/pumps, actual
+  recalculation, scenarios, storage restoration, language and the high-rise demo.
+- Typecheck, lint, all **34 Vitest cases**, and the Cloudflare-root production build
+  passed on the updated source.
+- Added pinned Wrangler, root-base build/deploy scripts, `wrangler.jsonc`, and a
+  Cloudflare Pages GitHub Actions workflow. GitHub Pages is now manual-only; future
+  successful CI can trigger Cloudflare when the documented secrets and opt-in
+  variable are provided. Workflow YAML parsed; no remote GitHub workflow ran.
+- **The Cloudflare preview uses a temporary account. Permanent user-account
+  hosting remains incomplete.** GitHub source upload is a separate action. Account claim links/credentials
+  are not retained in project source or published documentation.
+
+See [Cloudflare deployment](CLOUDFLARE.md) for permanent setup and precise limits.

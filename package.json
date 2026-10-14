@@ -13,7 +13,11 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "build": "npm run typecheck && vite build",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "cloudflare:whoami": "wrangler whoami",
+    "cloudflare:create": "wrangler pages project create fireflow-lab --production-branch=main",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler pages deploy dist --project-name=fireflow-lab --branch=main"
   },
   "dependencies": {
     "@xyflow/react": "12.12.0",
@@ -46,6 +50,7 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.1",
     "vite": "8.3.4",
-    "vitest": "5.0.3"
+    "vitest": "5.0.3",
+    "wrangler": "4.151.0"
   }
 }

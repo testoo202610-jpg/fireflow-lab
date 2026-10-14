@@ -4,7 +4,7 @@
 والتدفقات باستخدام **OWA EPANET 2.2** عبر **epanet-js 0.9.0 وWebAssembly** داخل
 Web Worker. لا يحتاج الاستخدام الأساسي إلى خادم مدفوع أو مفتاح API.
 
-[English](README.md) · [تفاصيل النموذج الهندسي](docs/ENGINEERING.md) · [التحقق الفعلي](docs/VERIFICATION.md)
+[English](README.md) · [تفاصيل النموذج الهندسي](docs/ENGINEERING.md) · [التحقق الفعلي](docs/VERIFICATION.md) · [النشر على Cloudflare](docs/CLOUDFLARE.md)
 
 ## التشغيل
 
@@ -78,9 +78,11 @@ npm run preview
 
 ## النشر والصلاحيات
 
-رفض GitHub إنشاء مستودع جديد برسالة `Resource not accessible by integration`
-وHTTP 403. لم يُعدَّل مستودع آخر، ولم يُنشأ رابط منشور. نسخة Git محلية وملفا
-Actions/Pages جاهزان. بعد توفير حساب يملك صلاحية إنشاء مستودع جديد:
+المستودع متاح الآن:
+https://github.com/testoo202610-jpg/fireflow-lab
+رفض الاتصال إنشاءه بخطأ 403؛ وبعد إنشائه خارجيًا تحققنا أنه فارغ ومتاح لرفع المصدر.
+المعاينة المؤقتة على Cloudflare تعمل على الرابط المذكور أدناه. النشر الدائم
+في حساب المستخدم ما زال يحتاج اتصال Cloudflare. راجع سجل التحقق لحالة رفع المصدر.
 
 إذا استخدمت حزمة المصدر ZIP دون تاريخ Git، هيئ المجلد المستخرج أولًا بالأوامر
 `git init -b main` ثم `git add .` و`git commit -m "Implement FireFlow Lab"`.
@@ -89,8 +91,8 @@ Actions/Pages جاهزان. بعد توفير حساب يملك صلاحية إ�
 gh repo create fireflow-lab --public --source=. --remote=origin --push
 ```
 
-اختر **Settings → Pages → Source: GitHub Actions**. نجاح workflow الفحص
-يبدأ النشر. يتوفر تشغيل يدوي للنشر أيضًا. يجب التحقق من رابط Pages وتشغيل
+اختر **Settings → Pages → Source: GitHub Actions**. نشر GitHub Pages اختياري ويُشغّل يدويًا. النشر الآلي الحالي مخصص لـCloudflare
+بعد توفير الأسرار وتفعيل متغير النشر. يجب التحقق من رابط Pages وتشغيل
 حساب فعلي عليه قبل إعلان نجاح النشر.
 
 ## الحدود الهندسية
@@ -105,3 +107,8 @@ gh repo create fireflow-lab --public --source=. --remote=origin --push
 **هذا البرنامج أداة تعليمية وتحليلية. لا تُستخدم مخرجاته وحدها لاعتماد تصميم
 أو تعديل أو تشغيل نظام مكافحة حريق حقيقي. يلزم التحقق من المدخلات والمعايير
 المعمول بها ومراجعة مهندس مختص.** لا تُدّعى مطابقة NFPA 13 أو NFPA 20 أو NFPA 25.
+
+للنشر الحالي على Cloudflare راجع [دليل النشر](docs/CLOUDFLARE.md).
+المعاينة المؤقتة التي نُشرت وتحقق تشغيل المحرك عليها:
+https://fireflow-lab.frosted-editor.workers.dev/
+النشر الدائم ورفع المصدر إلى GitHub ما زالا يحتاجان اتصال الحسابين.

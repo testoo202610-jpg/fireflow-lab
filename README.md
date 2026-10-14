@@ -6,7 +6,7 @@ All calculated pressure and flow values come from **OWA EPANET 2.2** through
 **epanet-js 0.9.0 / WebAssembly**, in an isolated browser Worker. No backend,
 subscription, external AI API or API key is required for core use.
 
-[الدليل العربي](README_AR.md) · [Engineering model](docs/ENGINEERING.md) · [Verified delivery](docs/VERIFICATION.md)
+[الدليل العربي](README_AR.md) · [Engineering model](docs/ENGINEERING.md) · [Verified delivery](docs/VERIFICATION.md) · [Cloudflare deployment](docs/CLOUDFLARE.md)
 
 ## Run
 
@@ -99,10 +99,16 @@ calibration. Add more measurements through node properties as needed.
 
 ## Deployment
 
-This session's GitHub token can read the account but **cannot create a new
-repository** (GraphQL and REST returned `Resource not accessible by integration`,
-REST HTTP 403). No unrelated repository was changed. No GitHub repository or
-production URL is claimed. The local Git repository and both workflows are ready.
+The repository is now available at https://github.com/testoo202610-jpg/fireflow-lab.
+The integration could not create it (HTTP 403); after it was created externally,
+this session verified that it was empty and accessible for source upload.
+
+The verified temporary Cloudflare preview is:
+https://fireflow-lab.frosted-editor.workers.dev/
+
+For permanent Cloudflare hosting, see [Cloudflare deployment](docs/CLOUDFLARE.md).
+The account connection and deployment secrets are still required. Source upload
+verification and deployment checks are recorded in `docs/VERIFICATION.md`.
 
 With an account authorized to create a **new** `fireflow-lab` repository:
 
@@ -115,8 +121,7 @@ gh repo create fireflow-lab --public --source=. --remote=origin --push
 ```
 
 Select **Settings → Pages → Source: GitHub Actions** in that new repository.
-The successful `Check and build` workflow triggers `Deploy GitHub Pages`, which
-builds with `/<repository-name>/` as Vite's base path and uploads `dist/`.
+The optional manual `Deploy GitHub Pages` workflow builds with `/<repository-name>/` as Vite's base path and uploads `dist/`.
 A manual deployment is available via `workflow_dispatch`. Deployment requires
 Pages/Actions permissions. Always verify the returned production URL and run a
 real simulation there before reporting deployment success.
@@ -133,3 +138,7 @@ JSON is limited to 15 MB. Scope and actual checks are documented in `docs/`.
 **This is an educational and analytical tool. Its outputs alone must not approve
 the design, modification or operation of a real fire protection system. Verify
 inputs and applicable standards with a qualified engineer.**
+
+For the current Cloudflare target, see [Cloudflare deployment](docs/CLOUDFLARE.md).
+The verified temporary preview is https://fireflow-lab.frosted-editor.workers.dev/.
+Permanent hosting and GitHub upload require the account connections described there.
